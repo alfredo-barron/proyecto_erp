@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Listado de Cuentas - Mi Aplicación ERP{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Listado de Cuentas</h2>
+    <a href="{{ url_for('cuentas.nueva_cuenta') }}">Nueva Cuenta</a>
+    <ul>
+        {% for cuenta in cuentas %}
+            <li>
+                {{ cuenta.nombre }} - Saldo: {{ cuenta.saldo }}
+                <a href="{{ url_for('cuentas.detalles_cuenta', cuenta_id=cuenta.id) }}">Detalles</a>
+                <a href="{{ url_for('cuentas.editar_cuenta', cuenta_id=cuenta.id) }}">Editar</a>
+                <form action="{{ url_for('cuentas.eliminar_cuenta', cuenta_id=cuenta.id) }}" method="post" style="display:inline;">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

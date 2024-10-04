@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Detalles de la Cuenta - Mi Aplicación ERP{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Detalles de la Cuenta</h2>
+    <p>Nombre: {{ cuenta.nombre }}</p>
+    <p>Saldo: {{ cuenta.saldo }}</p>
+    <a href="{{ url_for('cuentas.listar_cuentas') }}">Volver al listado</a>
+</section>
+{% endblock %}
